@@ -25,6 +25,8 @@
 /usr/bin/dscl . -append /Groups/admin GroupMembership sysadmin
 
 
+#sleep after this
+
 sleep 10
 
 exit 0
