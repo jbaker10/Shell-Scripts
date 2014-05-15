@@ -23,6 +23,7 @@ mount4=`mount_smbfs //jeremiah.baker@va1srvgenfs01.dco-intranet.lan/Shared/IT/Pr
 
 
 ## Sets a while loop so if it isn't on the network, it tries for 1 minute by pinging an internal resource
+
 i=1
 while [ $i -lt 12 ]
 do
@@ -32,27 +33,27 @@ do
             echo "$dir1 is already mounted"
         else
             echo "Share not mounted"
-            mounts=("$mount1")
+            mounts[$[${#mounts[@]}+1]]=mount1
         fi
         if mount | grep $dir2 > /dev/null; then
             echo "$dir2 is already mounted"
         else
             echo "Share already mounted"
-            mounts=("${mounts[@]}" "$mount2")
+            mounts[$[${#mounts[@]}+1]]=mount2
         fi
         if mount | grep $dir3 > /dev/null; then
             echo "$dir3 is already mounted"
         else
             echo "Share already mounted"
-            mounts=("${mounts[@]}" "$mount3")
+            mounts[$[${#mounts[@]}+1]]=mount3
         fi
         if mount | grep $dir4 > /dev/null; then
             echo "$dir4 is already mounted"
         else
             echo "Share already mounted"
-            mounts=("${mounts[@]}" "$mount2")
+            mounts[$[${#mounts[@]}+1]]=mount4
         fi
-echo "${mounts[@]}"
+echo ${mounts[@]}
 #mount_drives(){
 #    1 =
 #}
