@@ -54,6 +54,13 @@ do
             mounts[$[${#mounts[@]}+1]]=mount4
         fi
 echo ${mounts[@]}
+
+count=0
+for i in ${mounts[@]}; do
+    mounts[$count];
+    ((count++))
+done
+
 #mount_drives(){
 #    1 =
 #}
