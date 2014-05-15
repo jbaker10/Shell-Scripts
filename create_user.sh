@@ -20,7 +20,7 @@
 
 /usr/bin/dscl . -create /Users/sysadmin NFSHomeDirectory /Users/sysadmin
 
-/usr/bin/dscl . -passwd /Users/sysadmin 8065deanadmin
+/usr/bin/dscl . -passwd /Users/sysadmin **********
 
 /usr/bin/dscl . -append /Groups/admin GroupMembership sysadmin
 

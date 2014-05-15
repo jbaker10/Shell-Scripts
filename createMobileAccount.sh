@@ -8,12 +8,12 @@
 
 
 ## Changes the directory to the current directory holding the cocoaDialog app
-CD=/Library/cvent_apps/CocoaDialog.app/Contents/MacOS/CocoaDialog
+CD=/Library/DIRECTORY/CocoaDialog.app/Contents/MacOS/CocoaDialog
 echo $CD
 
 ## Sets the user to the login name as opposed to using whoami as this gets messed up when running a sudo command, it sees the user as root
 #user=`logname`
-getUser=`$CD standard-inputbox --title "Enter Cvent Username" --informative-text "Please enter your Cvent username below" --no-cancel --float`
+getUser=`$CD standard-inputbox --title "Enter Username" --informative-text "Please enter your username below" --no-cancel --float`
 user=`echo $getUser | awk '{print $NF}'`
 
 
@@ -21,13 +21,14 @@ user=`echo $getUser | awk '{print $NF}'`
 i=0
 
 ## The checkPasswords functions is a while loop that will run a total of 3 times if necessary. Each time it will ask the user for their password twice, and then compare the strings to make sure they match. If they do not match, it will display an error and restart the loop until it has run 3 times at which point it will tell the user to contact their IT department
+
 checkPasswords(){
     while [ $i -lt 3 ]; 
         do
 
             ## It was necessary to set the password variable twice for each password entered because the first one uses the built in cocoaDialog flags to take in the passwords, and the second one strips an unwanted space out that is added by default in the cocoaDialog variable
 
-            getPwd1=`$CD secure-standard-inputbox --title "Enter Password" --informative-text "Please enter your Cvent password below to create the user: "$user" on this disk:" --no-cancel --float`
+            getPwd1=`$CD secure-standard-inputbox --title "Enter Password" --informative-text "Please enter your password below to create the user: "$user" on this disk:" --no-cancel --float`
             pwd1=`echo $getPwd1 | awk '{print $NF}'`
 
 
@@ -55,8 +56,8 @@ checkPasswords(){
 
                     elif [ $i == 3 ];
                     then
-                        #echo "Please contact ISHelp at ishelp@cvent.com if you are having trouble with your password entry"
-                        $CD ok-msgbox --title "" --text "Your passwords do not match" --informative-text "Please screenshot this error (Bad Password) and contact ISHelp at ishelp@cvent.com" --float --no-cancel
+                        #echo "Please contact your IT department if you are having trouble with your password entry"
+                        $CD ok-msgbox --title "" --text "Your passwords do not match" --informative-text "Please screenshot this error (Bad Password) and contact your IT department" --float --no-cancel
                     fi
                     checkPasswords;
             else
