@@ -1,4 +1,4 @@
-#!/bin/sh -xvf
+#!/bin/sh
 
 #  auto_mount.sh
 #  
