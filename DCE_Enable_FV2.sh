@@ -1,1 +1,0 @@
-diskutil cs convert /dev/disk0s2 -passphrase ***************
